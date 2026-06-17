@@ -1,6 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
  
+void solve(vector<int>& arr,int ind, vector<int>& ans) {
+    for(int i = ind; i<ind+arr.size();i++){
+        ans.push_back(arr[i-ind]);
+    }
+    
+}
+ 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
@@ -10,34 +17,31 @@ int main() {
  
     while (t--) {
         int n;
-        cin >> n;
- 
-        vector<int> s6, s2, s1, s3;
- 
-        for (int i = 0; i < n; i++) {
-            int x;
-            cin >> x;
- 
-            if (x % 6 == 0)
-                s6.push_back(x);
-            else if (x % 2 == 0)
-                s2.push_back(x);
-            else if (x % 3 == 0)
-                s3.push_back(x);
-            else
-                s1.push_back(x);
+         cin>>n;
+         vector<int> arr(n);
+         vector<int> two,six,three,other;
+         for(int i = 0;i<n;i++){
+            cin>>arr[i];
+            if(arr[i]%6==0){
+                six.push_back(arr[i]);
+            }else if(arr[i]%2==0){
+                two.push_back(arr[i]);
+            }else if(arr[i]%3==0){
+                three.push_back(arr[i]);
+            }else{
+                other.push_back(arr[i]);
+            }
+         }
+         vector<int> ans;
+        solve(six,0,ans);
+        solve(two,six.size(),ans);
+        solve(other,six.size(),ans);
+        solve(three,six.size()+two.size()+other.size(),ans);
+        for(int i = 0; i<n; i++){
+            cout<<ans[i]<<" ";
         }
- 
-        vector<int> ans;
- 
-        for (int x : s6) ans.push_back(x);
-        for (int x : s2) ans.push_back(x);
-        for (int x : s1) ans.push_back(x);
-        for (int x : s3) ans.push_back(x);
- 
-        for (int i = 0; i < n; i++) {
-            cout << ans[i] << " \n"[i == n - 1];
-        }
+        cout<<endl;
+        
     }
  
     return 0;
