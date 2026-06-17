@@ -9,20 +9,28 @@ int main() {
     cin >> t;
  
     while (t--) {
-        int n;
+    long long n;
         string s;
  
         cin >> n;
         cin >> s;
+long long cnt1 = 0;
+long long cnt2 = 0;
+for(int i = 0;i<n;i++){
  
-        int open = 0, close = 0;
- 
-        for (char c : s) {
-            if (c == '(') open++;
-            else close++;
+     
+            if (s[i]=='('){ 
+            cnt1++;}
+            else {
+            cnt2++;}
         }
  
-        cout << (open == close ? "YES" : "NO") << '\n';
+if(cnt1==cnt2){
+    cout<<"YES"<<endl;
+}else{
+    cout<<"NO"<<endl;
+    
+}
     }
  
     return 0;
