@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+void solve() {
+    ll n; cin>>n;
+    vector<string> v(n);
+    for(int i = 0; i < n; i++){
+        cin>>v[i];
+    }
+    string ans = v[0];
+    for(int i = 1; i < n; i ++){
+        string a = v[i] + ans;
+        string b = ans + v[i];
+    if(a<b) ans = a;
+else ans =b;
+    }
+    cout<<ans<<endl;
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int t;
+    cin >> t;
+
+    while (t--) {
+        solve();
+    }
+
+    return 0;
+}
